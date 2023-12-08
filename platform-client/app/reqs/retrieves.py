@@ -4,17 +4,14 @@ import requests
 from models import enums, models, schemas
 from config import Enpoints
 
-# ---------------------------------------------------------------------------------------------
-# -- Consts
-
 
 # ---------------------------------------------------------------------------------------------
 # -- Functions
 # -- -- Get data
-def retrieve_data(currency_id : enums.CurrencyId,
+def retrieve_candle(currency_id : enums.CurrencyId,
                   cookies : dict,
                   type : enums.Type = enums.Type.CURRENT,
-                  ):
+                  ) -> schemas.Candle:
     # Query params
     params = {
         'currencyId' : currency_id.value,
@@ -24,7 +21,7 @@ def retrieve_data(currency_id : enums.CurrencyId,
     
     url = Enpoints.RATES.value
     
-    print(f"Req[GET] -> {url}{params_str}", end=' | ')
+    print(f"  [-] Req[GET] -> {url}{params_str}", end=' | ')
     response = requests.get(
         url=url,
         params=params,
@@ -81,9 +78,15 @@ def retrieve_data(currency_id : enums.CurrencyId,
             request_id=data["request_id"]
         )
         
-        print()
-        print(rates)
+        candle = schemas.Candle(
+            time    = rates.ticker.min.t,
+            open    = rates.ticker.min.o,
+            high    = rates.ticker.min.h,
+            low     = rates.ticker.min.l,
+            close   = rates.ticker.min.c
+        )
         
+        return candle
         
     else:
         print(f'ERROR ({str(response.status_code)})')
