@@ -1,6 +1,6 @@
-from models.schemas import Candle
+from core.models.schemas import Candle
 from strategies.strategy_one import TradingStrategyOne
-from utils.store import read_candles_from_csv
+from core.utils.store import read_candles_from_csv
 
 balance = None
 purchase_price = None

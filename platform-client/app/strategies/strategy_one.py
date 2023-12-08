@@ -1,7 +1,7 @@
 import numpy as np
 import talib
 
-from models.schemas import Candle
+from core.models.schemas import Candle
 
 
 class TradingStrategyOne:
