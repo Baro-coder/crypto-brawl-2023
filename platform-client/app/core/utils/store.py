@@ -1,7 +1,7 @@
 import os
 import csv
 
-from models.schemas import Candle
+from core.models.schemas import Candle
 
 def __init_file(file_path: str) -> Candle | None:
     if not os.path.isfile(file_path):

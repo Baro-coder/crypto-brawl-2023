@@ -1,5 +1,5 @@
 from typing import NamedTuple
-
+from .enums import CurrencyId
 
 class Candle(NamedTuple):
     time    : int

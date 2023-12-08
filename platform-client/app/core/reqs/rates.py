@@ -1,17 +1,10 @@
-import sys
 import requests
 
-from models import enums, models, schemas
-from config import Enpoints
+from core.models import enums, models, schemas
 
 
-# ---------------------------------------------------------------------------------------------
-# -- Functions
-# -- -- Get data
-def retrieve_candle(currency_id : enums.CurrencyId,
-                  cookies : dict,
-                  type : enums.Type = enums.Type.CURRENT,
-                  ) -> schemas.Candle:
+# -- -- Get candle
+def get_candle(url: str, currency_id : enums.CurrencyId, cookies : dict, type : enums.Type = enums.Type.CURRENT) -> schemas.Candle:
     # Query params
     params = {
         'currencyId' : currency_id.value,
@@ -19,9 +12,8 @@ def retrieve_candle(currency_id : enums.CurrencyId,
     }
     params_str = '?' + '&'.join([f'{key}={value}' for key, value in params.items()])
     
-    url = Enpoints.RATES.value
-    
-    print(f"  [-] Req[GET] -> {url}{params_str}", end=' | ')
+    # Perform request
+    print('        [$] REQUEST (GET): ' + url + params_str, end=' | ')
     response = requests.get(
         url=url,
         params=params,
@@ -29,10 +21,12 @@ def retrieve_candle(currency_id : enums.CurrencyId,
         verify=False
     )
     
+    # Check response code
     if response.status_code == 200:
         print('OK')
         data : dict = response.json()["rates"]
 
+        # Build response code structure
         rates : models.Rates = models.Rates(
             ticker=models.Ticker(
                 ticker              = data["ticker"]["ticker"],
@@ -78,6 +72,7 @@ def retrieve_candle(currency_id : enums.CurrencyId,
             request_id=data["request_id"]
         )
         
+        # Retrieve appropriate schema
         candle = schemas.Candle(
             time    = rates.ticker.min.t,
             open    = rates.ticker.min.o,
@@ -86,8 +81,11 @@ def retrieve_candle(currency_id : enums.CurrencyId,
             close   = rates.ticker.min.c
         )
         
+        # Return candle schema
         return candle
         
     else:
+        # HTTP exception
+        print('ERROR - ' + str(response.status_code))
         print(f'ERROR ({str(response.status_code)})')
         raise Exception("Error response code: " + str(response.status_code))
