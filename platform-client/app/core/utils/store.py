@@ -40,3 +40,26 @@ def store_in_csv(file_path: str, candle: Candle) -> None:
 
 def get_latest_from_csv(file_path: str) -> Candle | None:
     return __init_file(file_path)
+
+
+def read_candles_from_csv(file_path):
+    candles = []
+
+    try:
+        with open(file_path, 'r') as csv_file:
+            csv_reader = csv.DictReader(csv_file)
+
+            for row in csv_reader:
+                time = int(row['time'])
+                open_price = float(row['open'])
+                high = float(row['high'])
+                low = float(row['low'])
+                close = float(row['close'])
+
+                candle = Candle(time=time, open=open_price, high=high, low=low, close=close)
+                candles.append(candle)
+
+    except Exception as e:
+        print(f"Error reading file: {e}")
+
+    return candles
