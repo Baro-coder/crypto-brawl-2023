@@ -38,9 +38,9 @@ class Settings:
         print('       - ETH data : ' + self.data_eth_csv_file)
         
         self.btc_window_size : int = btc_window_size
-        print('    [-] BTC window size: ' + self.btc_window_size)
+        print('    [-] BTC window size: ' + str(self.btc_window_size))
         self.eth_window_size : int = eth_window_size
-        print('    [-] ETH window size: ' + self.eth_window_size)
+        print('    [-] ETH window size: ' + str(self.eth_window_size))
         
         # Refresh rate [s]
         self.refresh_rate : int = refresh_delay
@@ -53,5 +53,5 @@ settings = Settings(
     api_url_sufix='ui/api',
     refresh_delay=10,
     btc_window_size=50,
-    etc_window_size=50
+    eth_window_size=50
 )
