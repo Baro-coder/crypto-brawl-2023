@@ -2,7 +2,9 @@ from core import Controller
 
 
 def main() -> None:
-    controller : Controller = Controller()
+    controller : Controller = Controller(
+        load_strategies_data_from_files=True
+    )
     try:
         controller.initialize()
         controller.work()

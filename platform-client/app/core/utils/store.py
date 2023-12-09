@@ -42,7 +42,7 @@ def get_latest_from_csv(file_path: str) -> Candle | None:
     return __init_file(file_path)
 
 
-def read_candles_from_csv(file_path):
+def read_candles_from_csv(file_path: str):
     candles = []
 
     try:
@@ -60,6 +60,6 @@ def read_candles_from_csv(file_path):
                 candles.append(candle)
 
     except Exception as e:
-        print(f"Error reading file: {e}")
+        print(f"[!] Error reading file [{file_path}]: {e}")
 
     return candles

@@ -19,7 +19,7 @@ class TradingStrategyOne:
 
 
     def update_candle(self, candle: Candle) -> None:
-        if len(self.candles) == 0 or self.candles[-1].time != candle.time:
+        if len(self.candles) == 0 or self.candles[-1].time < candle.time:
             self.candles.append(candle)
             store_in_csv(self.data_csv_file, candle)
 

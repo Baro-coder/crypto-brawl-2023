@@ -6,8 +6,6 @@ class Settings:
                  data_dir: str,
                  root_url: str,
                  api_url_sufix: str,
-                 btc_window_size: int,
-                 eth_window_size: int,
                  refresh_delay: int) -> None:
         
         print('[*] Setting up the configuration...')
@@ -37,11 +35,6 @@ class Settings:
         self.data_eth_csv_file : str = f'{data_dir}/ETH.csv'
         print('       - ETH data : ' + self.data_eth_csv_file)
         
-        self.btc_window_size : int = btc_window_size
-        print('    [-] BTC window size: ' + str(self.btc_window_size))
-        self.eth_window_size : int = eth_window_size
-        print('    [-] ETH window size: ' + str(self.eth_window_size))
-        
         # Refresh rate [s]
         self.refresh_delay : int = refresh_delay
         print(f'    [-] Refresh delay: {refresh_delay}[s]')
@@ -51,7 +44,5 @@ settings = Settings(
     data_dir='data',
     root_url='https://platform.the-brawl.eu',
     api_url_sufix='ui/api',
-    btc_window_size=50,
-    eth_window_size=50,
     refresh_delay=10,
 )

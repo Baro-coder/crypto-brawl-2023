@@ -9,6 +9,7 @@ class Wallet:
 
     def update_value(self, new_value: float) -> None:
         if new_value:
+            print(f'        [-] Wallet {self.currency_id.value} : updated value : {new_value}')
             self.value = new_value
     
 
@@ -17,8 +18,9 @@ class CryptoWallet(Wallet):
         super().__init__(id, currency_id, value)
         self.balance : float = balance
         
-    def update_balance(self, balance: float) -> None:
-        self.balance = balance
+    def update_balance(self, new_balance: float) -> None:
+        print(f'        [-] Wallet {self.currency_id.value} : updated balance : {new_balance}')
+        self.balance = new_balance
         
     def update_value(self, new_value: float | None = None, close_price: float | None = None) -> None:
         if new_value:
