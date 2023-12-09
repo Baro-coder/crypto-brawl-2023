@@ -5,7 +5,7 @@ from core.models.schemas import Candle
 
 def __init_file(file_path: str) -> Candle | None:
     if not os.path.isfile(file_path):
-        print(f'[*] CSV File initialized: {file_path}')
+        print(f'        [*] CSV File initialized: {file_path}')
         with open(file_path, mode='w', newline='') as file:
             writer = csv.writer(file)
             writer.writerow(['time', 'open', 'high', 'low', 'close'])
@@ -30,7 +30,7 @@ def __write_to_file(file_path: str, candle: Candle) -> None:
     with open(file_path, mode="a", newline='') as file:
         writer = csv.writer(file)
         writer.writerow([candle.time, candle.open, candle.high, candle.low, candle.close])
-        print(f'     [+] Row added in [{file_path}] : [{candle.time}, {candle.open}, {candle.high}, {candle.low}, {candle.close}]')
+        print(f'        [+] Row added in [{file_path}] : [{candle.time}, {candle.open}, {candle.high}, {candle.low}, {candle.close}]')
         
 
 def store_in_csv(file_path: str, candle: Candle) -> None:

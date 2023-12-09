@@ -21,7 +21,7 @@ def __perform_transaction(url: str, wallet_src: Wallet, wallet_dst: Wallet, amou
     )
     
     # Perform request
-    print('        [$] REQUEST (POST): ' + url, end=' | ')
+    print('            [$] REQUEST (POST): ' + url, end=' | ')
     response = requests.post(
         url=url,
         data=payload,

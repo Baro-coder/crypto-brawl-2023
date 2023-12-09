@@ -43,7 +43,7 @@ class Settings:
         print('    [-] ETH window size: ' + str(self.eth_window_size))
         
         # Refresh rate [s]
-        self.refresh_rate : int = refresh_delay
+        self.refresh_delay : int = refresh_delay
         print(f'    [-] Refresh delay: {refresh_delay}[s]')
         
         
@@ -51,7 +51,7 @@ settings = Settings(
     data_dir='data',
     root_url='https://platform.the-brawl.eu',
     api_url_sufix='ui/api',
-    refresh_delay=10,
     btc_window_size=50,
-    eth_window_size=50
+    eth_window_size=50,
+    refresh_delay=10,
 )
