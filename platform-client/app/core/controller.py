@@ -44,6 +44,7 @@ class Controller:
             )
         print(self._eth_strategy)
         
+        
     
     # Public methods
     # -- initialize
@@ -61,6 +62,7 @@ class Controller:
     # -- work
     def work(self) -> None:
         print('[*] Controller works...')
+        
         
         # Loop
         while True:
@@ -233,15 +235,16 @@ class Controller:
                                 url=self._settings.endpoints['trade'],
                                 wallet_src=self._wallet_usd,
                                 wallet_dst=self._wallet_eth,
-                                amount=self._wallet_usd.value * 0.95
+                                amount=self._wallet_usd.value * 0.95,
+                                cookies=self._cookies
                             )
 
                         case Signal.SELL:
                             sell(
                                 url=self._settings.endpoints['trade'],
-                                wallet_src=self._wallet_btc,
+                                wallet_src=self._wallet_eth,
                                 wallet_dst=self._wallet_usd,
-                                amount=self._wallet_btc.value * 0.95,
+                                amount=self._wallet_eth.value * 0.95,
                                 cookies=self._cookies
                             )
 
