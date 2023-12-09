@@ -13,7 +13,7 @@ def get_candle(url: str, currency_id : enums.CurrencyId, cookies : dict, type : 
     params_str = '?' + '&'.join([f'{key}={value}' for key, value in params.items()])
     
     # Perform request
-    print('        [$] REQUEST (GET): ' + url + params_str, end=' | ')
+    print('            [$] REQUEST (GET): ' + url + params_str, end=' | ')
     response = requests.get(
         url=url,
         params=params,

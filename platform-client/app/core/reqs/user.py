@@ -6,7 +6,7 @@ from core.models.enums import CurrencyId
 # -- Get wallet data
 def __get_wallet_data(url: str, id: str, cookies: dict) -> dict:
     # Perform request
-    print('        [$] REQUEST (GET): ' + url, end=' | ')
+    print('            [$] REQUEST (GET): ' + url, end=' | ')
     response = requests.get(
         url=url,
         cookies=cookies,
