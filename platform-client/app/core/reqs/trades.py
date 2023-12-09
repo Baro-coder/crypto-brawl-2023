@@ -21,7 +21,7 @@ def __perform_transaction(url: str, wallet_src: Wallet, wallet_dst: Wallet, amou
     )
     
     # Perform request
-    print('        [$] REQUEST (POST): ' + url, end=' | ')
+    print('            [$] REQUEST (POST): ' + url, end=' | ')
     response = requests.post(
         url=url,
         data=payload,
@@ -42,6 +42,7 @@ def __perform_transaction(url: str, wallet_src: Wallet, wallet_dst: Wallet, amou
 
 
 def buy(url: str, wallet_src: Wallet, wallet_dst: CryptoWallet, amount: float, cookies: dict) -> None:
+    print(f'    [*] Operation [BUY]: Currency [{wallet_dst.currency_id.value}], Amount [{amount}]')
     try:
         # Perform buy transaction
         __perform_transaction(url, wallet_src, wallet_dst, amount, cookies)
@@ -50,6 +51,7 @@ def buy(url: str, wallet_src: Wallet, wallet_dst: CryptoWallet, amount: float, c
 
 
 def sell(url: str, wallet_src: CryptoWallet, wallet_dst: Wallet, amount: float, cookies: dict) -> None:
+    print(f'    [*] Operation [SELL]: Currency [{wallet_dst.currency_id.value}], Amount [{amount}]')
     try:
         # Perform sell transaction
         __perform_transaction(url, wallet_src, wallet_dst, amount, cookies)
