@@ -7,12 +7,17 @@ balance = None
 purchase_price = None
 bought_count, sold_count = 0, 0
 
+current_file_path = ""
+candles_data: list[Candle] = []
+
 
 def run_test_one(file_path, short_ema_length, long_ema_length, stop_loss, window_size, start_balance):
-    global balance, bought_count, sold_count
+    global balance, bought_count, sold_count, candles_data
     balance = start_balance
     bought_count, sold_count = 0, 0
-    candles_data: list[Candle] = read_candles_from_csv(file_path)
+
+    if file_path != current_file_path or candles_data == []:
+        candles_data = read_candles_from_csv(file_path)
 
     strategy = TradingStrategyOne(short_ema_length=short_ema_length, long_ema_length=long_ema_length,
                                   stop_loss=stop_loss, window_size=window_size)
@@ -59,7 +64,7 @@ def update_balance(received_signal: str | None, current_price: Candle | None):
 
     if received_signal == "BUY":
         purchase_price = current_price.close
-        #print(balance)
+        # print(balance)
         bought_count += 1
     elif received_signal == "SELL":
         balance = balance * (current_price.close / purchase_price)

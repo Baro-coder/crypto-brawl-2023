@@ -58,3 +58,19 @@ Total Balance: 1013457.5968307068
 Total Profit: 13457.59683070681
 Percent Profit: 1.345759683070681%
 File Path: ../data/BTC.csv
+Najlepsze parametry strategii Ema:
+Ema long: 22
+Ema short: 13
+Stop Loss: 0.006
+Total Balance: 1094237.6404204043
+Total Profit: 94237.64042040426
+Percent Profit: 9.423764042040427%
+f Execution transactions: 133 : 133File Path: ../test_data/ATAI-Dev.BTC.MIN1_new_week.csv
+Najlepsze parametry strategii Ema:
+Ema long: 25
+Ema short: 17
+Stop Loss: 0.001
+Total Balance: 1126835.756903967
+Total Profit: 126835.75690396689
+Percent Profit: 12.68357569039669%
+f Execution transactions: 151 : 151File Path: ../test_data/ATAI-Dev.ETH.MIN1_new_week.csv

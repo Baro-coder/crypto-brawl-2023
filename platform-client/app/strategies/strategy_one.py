@@ -13,6 +13,7 @@ class TradingStrategyOne:
         self.candles : list[Candle] = []
         self.transactions = False
         self.stop_loss_price = None
+        self.open_price = None
 
     def update_candle(self, candle: Candle):
         self.candles.append(candle)
@@ -32,12 +33,16 @@ class TradingStrategyOne:
             signal = "BUY"
             self.transactions = True
             self.stop_loss_price = close_prices[-1] * (1 - self.stop_loss)
+            self.open_price = close_prices[-1]
         elif self.transactions and ema_short[-1] < ema_long[-1]:
             signal = "SELL"
             self.transactions = False
         elif self.transactions and close_prices[-1] < self.stop_loss_price:
             signal = "SELL"
             self.transactions = False
+        elif self.transactions and close_prices[-1] > self.open_price:
+            self.stop_loss_price = close_prices[-1] * (1 - self.stop_loss)
+            signal = "HOLD"
         else:
             signal = "HOLD"
 

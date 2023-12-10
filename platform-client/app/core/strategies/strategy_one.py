@@ -18,6 +18,7 @@ class TradingStrategyOne:
         self.transactions: bool = False
         self.stop_loss_price: float = None
         self.data_csv_file: str = data_csv_file
+        self.open_price: int = None
 
     def update_candle(self, candle: Candle) -> None:
         if len(self.candles) == 0 or self.candles[-1].time < candle.time:
@@ -39,6 +40,7 @@ class TradingStrategyOne:
             signal = Signal.BUY
             self.transactions = True
             self.stop_loss_price = close_prices[-1] * (1 - self.stop_loss)
+            self.open_price = close_prices[-1]
 
         elif self.transactions and ema_short[-1] < ema_long[-1]:
             signal = Signal.SELL
@@ -47,6 +49,10 @@ class TradingStrategyOne:
         elif self.transactions and close_prices[-1] < self.stop_loss_price:
             signal = Signal.SELL
             self.transactions = False
+
+        elif self.transactions and close_prices[-1] > self.open_price:
+            self.stop_loss_price = close_prices[-1] * (1 - self.stop_loss)
+            signal = Signal.HOLD
 
         else:
             signal = Signal.HOLD
@@ -68,10 +74,8 @@ class TradingStrategyOne:
     def __str__(self):
         return (
             f"TradingStrategyTwo("
-            f"stoch_length={self.stoch_length}, "
-            f"stoch_d_length={self.stoch_d_length}, "
-            f"overbought_threshold={self.overbought_threshold}, "
-            f"oversold_threshold={self.oversold_threshold}, "
+            f"short_ema_length={self.short_ema_length}, "
+            f"long_ema_length={self.long_ema_length}, "
             f"stop_loss={self.stop_loss}, "
             f"window_size={self.window_size}, "
             f"data_csv_file='{self.data_csv_file}'"
