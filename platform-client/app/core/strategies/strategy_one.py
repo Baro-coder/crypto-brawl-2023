@@ -20,6 +20,9 @@ class TradingStrategyOne:
         self.data_csv_file: str = data_csv_file
         self.open_price: int = None
 
+    def set_transaction_flag(self, flag: bool):
+        self.transactions = flag
+
     def update_candle(self, candle: Candle) -> None:
         if len(self.candles) == 0 or self.candles[-1].time < candle.time:
             self.candles.append(candle)
@@ -38,17 +41,14 @@ class TradingStrategyOne:
 
         if self.transactions is False and ema_short[-1] > ema_long[-1]:
             signal = Signal.BUY
-            self.transactions = True
             self.stop_loss_price = close_prices[-1] * (1 - self.stop_loss)
             self.open_price = close_prices[-1]
 
         elif self.transactions and ema_short[-1] < ema_long[-1]:
             signal = Signal.SELL
-            self.transactions = False
 
         elif self.transactions and close_prices[-1] < self.stop_loss_price:
             signal = Signal.SELL
-            self.transactions = False
 
         elif self.transactions and close_prices[-1] > self.open_price:
             self.stop_loss_price = close_prices[-1] * (1 - self.stop_loss)

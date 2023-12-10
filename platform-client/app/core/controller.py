@@ -269,9 +269,10 @@ class Controller:
                         url=self._settings.endpoints['trade'],
                         wallet_src=self._wallet_usd,
                         wallet_dst=self._wallet_btc,
-                        amount=self._wallet_usd.value * 0.999,
+                        amount=self._wallet_usd.value * 0.99,
                         cookies=self._cookies
                     )
+                    self._btc_strategy.set_transaction_flag(True)
                     bought_count += 1
 
                 case Signal.SELL:
@@ -279,9 +280,10 @@ class Controller:
                         url=self._settings.endpoints['trade'],
                         wallet_src=self._wallet_btc,
                         wallet_dst=self._wallet_usd,
-                        amount=self._wallet_btc.value * 0.99,
+                        amount=self._wallet_btc.value * 0.98,
                         cookies=self._cookies
                     )
+                    self._btc_strategy.set_transaction_flag(False)
                     sold_count += 1
 
                 case Signal.HOLD:
@@ -292,9 +294,10 @@ class Controller:
                                 url=self._settings.endpoints['trade'],
                                 wallet_src=self._wallet_usd,
                                 wallet_dst=self._wallet_eth,
-                                amount=self._wallet_usd.value * 0.999,
+                                amount=self._wallet_usd.value * 0.99,
                                 cookies=self._cookies
                             )
+                            self._eth_strategy.set_transaction_flag(True)
                             bought_count += 1
 
                         case Signal.SELL:
@@ -302,9 +305,10 @@ class Controller:
                                 url=self._settings.endpoints['trade'],
                                 wallet_src=self._wallet_eth,
                                 wallet_dst=self._wallet_usd,
-                                amount=self._wallet_eth.value * 0.99,
+                                amount=self._wallet_eth.value * 0.98,
                                 cookies=self._cookies
                             )
+                            self._eth_strategy.set_transaction_flag(False)
                             sold_count += 1
 
                         case Signal.HOLD:

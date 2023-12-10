@@ -129,8 +129,7 @@ def test_two():
 
 
 def test_one_statistic():
-    files_path = ['../test_data/ATAI-Dev.BTC.MIN1_new_week.csv',
-                  '../test_data/ATAI-Dev.ETH.MIN1_new_week.csv', ]
+    files_path = ['../data/BTC.csv']
 
     for file_path in files_path:
         total_balance, bought_count, sold_count = run_test_one(file_path, short_ema_length=17,
