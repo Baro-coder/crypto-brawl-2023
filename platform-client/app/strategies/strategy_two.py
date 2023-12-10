@@ -36,12 +36,15 @@ class TradingStrategyTwo:
             signal = "BUY"
             self.transactions = True
             self.stop_loss_price = close_prices[-1] * (1 - self.stop_loss)
+            # print(f"Buy price: {close_prices[-1]} with SL price: {self.stop_loss_price}")
         elif self.transactions and (stoch[-1] > self.overbought_threshold or stoch_d[-1] > self.overbought_threshold):
             signal = "SELL"
             self.transactions = False
+            # print(f"Sell price: {close_prices[-1]}")
         elif self.transactions and close_prices[-1] < self.stop_loss_price:
             signal = "SELL"
             self.transactions = False
+            # print(f"Sell by SL price: {close_prices[-1]}")
         else:
             signal = "HOLD"
 
