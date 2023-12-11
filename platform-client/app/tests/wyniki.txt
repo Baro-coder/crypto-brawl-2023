@@ -1,0 +1,76 @@
+Najlepsze parametry strategii Stoch:
+Stoch: 16
+d_stoch: 14
+Stop Loss: 0.003
+Overbought Threshold: 70
+Oversold Threshold: 10
+Total Balance: 1010711.2310729402
+Total Profit: 10711.231072940165
+Percent Profit: 1.0711231072940166%
+File Path: ../data/BTC.csv
+Najlepsze parametry strategii Stoch:
+Stoch: 7
+d_stoch: 13
+Stop Loss: 0.001
+Overbought Threshold: 75
+Oversold Threshold: 10
+Total Balance: 1013311.2070125672
+Total Profit: 13311.207012567203
+Percent Profit: 1.3311207012567203%
+File Path: ../data/ETH.csv
+Najlepsze parametry strategii Stoch:
+Stoch: 7
+d_stoch: 13
+Stop Loss: 0.001
+Overbought Threshold: 75
+Oversold Threshold: 10
+Total Balance: 1013311.2070125672
+Total Profit: 13311.207012567203
+Percent Profit: 1.3311207012567203%
+File Path: ../data/ETH.csv
+Najlepsze parametry strategii Stoch:
+Stoch: 13
+d_stoch: 9
+Stop Loss: 0.004
+Overbought Threshold: 80
+Oversold Threshold: 10
+Total Balance: 1013572.9220589694
+Total Profit: 13572.922058969387
+Percent Profit: 1.3572922058969386%
+File Path: ../data/BTC.csv
+Najlepsze parametry strategii Stoch:
+Stoch: 12
+d_stoch: 7
+Stop Loss: 0.004
+Overbought Threshold: 80
+Oversold Threshold: 10
+Total Balance: 1013457.5968307068
+Total Profit: 13457.59683070681
+Percent Profit: 1.345759683070681%
+File Path: ../data/BTC.csv
+Najlepsze parametry strategii Stoch:
+Stoch: 12
+d_stoch: 7
+Stop Loss: 0.004
+Overbought Threshold: 80
+Oversold Threshold: 10
+Total Balance: 1013457.5968307068
+Total Profit: 13457.59683070681
+Percent Profit: 1.345759683070681%
+File Path: ../data/BTC.csv
+Najlepsze parametry strategii Ema:
+Ema long: 22
+Ema short: 13
+Stop Loss: 0.006
+Total Balance: 1094237.6404204043
+Total Profit: 94237.64042040426
+Percent Profit: 9.423764042040427%
+f Execution transactions: 133 : 133File Path: ../test_data/ATAI-Dev.BTC.MIN1_new_week.csv
+Najlepsze parametry strategii Ema:
+Ema long: 25
+Ema short: 17
+Stop Loss: 0.001
+Total Balance: 1126835.756903967
+Total Profit: 126835.75690396689
+Percent Profit: 12.68357569039669%
+f Execution transactions: 151 : 151File Path: ../test_data/ATAI-Dev.ETH.MIN1_new_week.csv
